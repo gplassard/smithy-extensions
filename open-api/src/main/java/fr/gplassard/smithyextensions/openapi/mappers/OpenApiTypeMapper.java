@@ -13,7 +13,7 @@ public class OpenApiTypeMapper implements JsonSchemaMapper {
 
     @Override
     public Schema.Builder updateSchema(JsonSchemaMapperContext context, Schema.Builder schemaBuilder) {
-        var openApiTrait = context.getShape().getAllTraits().values().stream().filter(t -> t.toShapeId().getNamespace().equals("openapiplugin") && t.toShapeId().getName().equals("openApiType")).findFirst();
+        var openApiTrait = context.getShape().getAllTraits().values().stream().filter(t -> t.toShapeId().getNamespace().equals("openapiextensions") && t.toShapeId().getName().equals("openApiType")).findFirst();
 
         if (openApiTrait.isEmpty()) {
             return JsonSchemaMapper.super.updateSchema(context, schemaBuilder);
