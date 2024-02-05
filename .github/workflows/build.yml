@@ -1,0 +1,24 @@
+name: Java CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CODE_ARTIFACT_URL: ${{ secrets.CODE_ARTIFACT_URL }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Build
+        run: ./gradlew build --no-daemon

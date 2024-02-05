@@ -1,0 +1,13 @@
+[versions]
+smithy = "1.43.0"
+release-plugin = "3.0.2"
+
+[libraries]
+smithy-model = { module = "software.amazon.smithy:smithy-model", version.ref = "smithy" }
+smithy-openapi = { module = "software.amazon.smithy:smithy-openapi", version.ref = "smithy" }
+
+[bundles]
+# Define bundles/groups of libraries
+
+[plugins]
+release-plugin = { id = "net.researchgate.release", version.ref = "release-plugin"}
