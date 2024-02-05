@@ -1,0 +1,65 @@
+name: Java release api sports rugby
+
+on:
+  push:
+    tags:
+      - "open-api-*"
+
+jobs:
+  build-github:
+    runs-on: ubuntu-latest
+    env:
+      CODE_ARTIFACT_URL: ${{ secrets.CODE_ARTIFACT_URL }}
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Build
+        run: ./gradlew build
+      - name: Publish package
+        run: ./gradlew :open-api:publishAllPublicationsToGithubPackagesRepository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-code-artifact:
+    runs-on: ubuntu-latest
+    env:
+      CODE_ARTIFACT_URL: ${{ secrets.CODE_ARTIFACT_URL }}
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Build
+        run: ./gradlew build
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.CODE_ARTIFACT_WRITE_ROLE }}
+          aws-region: us-east-1
+      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-masking-a-generated-output-within-a-single-job
+      - name: Generate code artifact token
+        id: code-artifact-token
+        run: |
+          the_secret=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODE_ARTIFACT_DOMAIN }} --domain-owner ${{ secrets.AWS_ACCOUNT_ID }} --region eu-west-1 --query authorizationToken --output text --duration-seconds 900)
+          echo "::add-mask::$the_secret"
+          echo "token=$the_secret" >> "$GITHUB_OUTPUT"
+      - name: Publish package
+        run: ./gradlew :open-api:java-client:publishAllPublicationsToCodeArtifactRepository
+        env:
+          CODEARTIFACT_AUTH_TOKEN: ${{ steps.code-artifact-token.outputs.token }}
