@@ -60,6 +60,6 @@ jobs:
           echo "::add-mask::$the_secret"
           echo "token=$the_secret" >> "$GITHUB_OUTPUT"
       - name: Publish package
-        run: ./gradlew :open-api:java-client:publishAllPublicationsToCodeArtifactRepository
+        run: ./gradlew :open-api:publishAllPublicationsToCodeArtifactRepository
         env:
           CODEARTIFACT_AUTH_TOKEN: ${{ steps.code-artifact-token.outputs.token }}
