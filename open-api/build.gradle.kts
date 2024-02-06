@@ -6,6 +6,11 @@ plugins {
     id("maven-publish")
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 repositories {
     mavenCentral()
 }
