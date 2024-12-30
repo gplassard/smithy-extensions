@@ -1,6 +1,6 @@
 [versions]
 smithy = "1.53.0"
-release-plugin = "3.0.2"
+release-plugin = "3.1.0"
 
 [libraries]
 smithy-model = { module = "software.amazon.smithy:smithy-model", version.ref = "smithy" }
