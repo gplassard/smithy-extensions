@@ -1,5 +1,5 @@
 [versions]
-smithy = "1.59.0"
+smithy = "1.60.3"
 release-plugin = "3.1.0"
 
 [libraries]
