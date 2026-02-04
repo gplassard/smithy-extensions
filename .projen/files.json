@@ -4,6 +4,7 @@
     ".github/workflows/build.yml",
     ".github/workflows/projen-synth.yml",
     ".github/workflows/pull-request-lint.yml",
+    ".github/workflows/release-open-api.yml",
     ".github/workflows/upgrade-nodejs-dependencies.yml",
     ".gitignore",
     ".projen/deps.json",
