@@ -1,0 +1,16 @@
+{
+  "name": "smithy-extensions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "projen": "projen"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@gplassard/projen-extensions": "^0.1.24",
+    "projen": "^0.99.9"
+  }
+}
