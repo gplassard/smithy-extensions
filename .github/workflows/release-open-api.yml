@@ -55,7 +55,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v5
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.${{ secrets.CODE_ARTIFACT_WRITE_ROLE }} }}
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.CODE_ARTIFACT_WRITE_ROLE }}
           aws-region: us-east-1
       - name: Generate code artifact token
         id: code-artifact-token

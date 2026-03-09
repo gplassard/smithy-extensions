@@ -58,7 +58,7 @@ releaseWorkflow.addJob('build-code-artifact', {
       name: 'Build',
       run: './gradlew build',
     },
-    WorkflowActionsX.configureAwsCredentials('${{ secrets.CODE_ARTIFACT_WRITE_ROLE }}'),
+    WorkflowActionsX.configureAwsCredentials('CODE_ARTIFACT_WRITE_ROLE'),
     WorkflowActionsX.generateCodeArtifactToken(),
     {
       name: 'Publish package',
