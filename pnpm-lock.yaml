@@ -10,10 +10,10 @@ importers:
     devDependencies:
       '@gplassard/projen-extensions':
         specifier: ^0.1.60
-        version: 0.1.60(constructs@10.4.5)(projen@0.101.4(constructs@10.4.5))
+        version: 0.1.60(constructs@10.4.5)(projen@0.101.23(constructs@10.4.5))
       projen:
-        specifier: ^0.101.4
-        version: 0.101.4(constructs@10.4.5)
+        specifier: ^0.101.23
+        version: 0.101.23(constructs@10.4.5)
 
 packages:
 
@@ -26,8 +26,8 @@ packages:
   constructs@10.4.5:
     resolution: {integrity: sha512-fOoP70YLevMZr5avJHx2DU3LNYmC6wM8OwdrNewMZou1kZnPGOeVzBrRjZNgFDHUlulYUjkpFRSpTE3D+n+ZSg==}
 
-  projen@0.101.4:
-    resolution: {integrity: sha512-85HQncbGc18c+Fc0dLtWag0GGUS5Vt37tf6xBb7tR6lUJHCFWNrQHvKD+7PuyzwryGDcezl60JhErH+Wpf06xg==}
+  projen@0.101.23:
+    resolution: {integrity: sha512-gI1vvX7NdhtnRVT2GqMwymq9Z25YNGw7xtp89gXPtomn+GfmBEnLo80GDyEM8qTYxqTZXG5axMb137PCT2uzwQ==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     peerDependencies:
@@ -50,13 +50,13 @@ packages:
 
 snapshots:
 
-  '@gplassard/projen-extensions@0.1.60(constructs@10.4.5)(projen@0.101.4(constructs@10.4.5))':
+  '@gplassard/projen-extensions@0.1.60(constructs@10.4.5)(projen@0.101.23(constructs@10.4.5))':
     dependencies:
       constructs: 10.4.5
-      projen: 0.101.4(constructs@10.4.5)
+      projen: 0.101.23(constructs@10.4.5)
 
   constructs@10.4.5: {}
 
-  projen@0.101.4(constructs@10.4.5):
+  projen@0.101.23(constructs@10.4.5):
     dependencies:
       constructs: 10.4.5

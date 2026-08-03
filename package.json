@@ -11,6 +11,6 @@
   "license": "ISC",
   "devDependencies": {
     "@gplassard/projen-extensions": "^0.1.60",
-    "projen": "^0.101.4"
+    "projen": "^0.101.23"
   }
 }
